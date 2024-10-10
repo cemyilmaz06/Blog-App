@@ -3,7 +3,7 @@ import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
+
 import { Link } from "react-router-dom"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
@@ -21,30 +21,27 @@ const Login = () => {
           p: 2,
         }}
       >
-        <Grid item xs={12} mb={3}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
-          </Typography>
-        </Grid>
+        
 
-        <Grid item xs={12} sm={10} md={6}>
+        <Grid item xs={12} sm={10} md={4}>
           <Avatar
             sx={{
               backgroundColor: "secondary.light",
               m: "auto",
               width: 40,
               height: 40,
+              mt:4
             }}
           >
             <LockIcon size="30" />
           </Avatar>
           <Typography
-            variant="h4"
+            variant="h5"
             align="center"
             mb={4}
-            color="secondary.light"
+            color="secondary.ligh"
           >
-            Login
+            Sign in
           </Typography>
 
           <Box
@@ -66,20 +63,16 @@ const Login = () => {
               variant="outlined"
             />
             <Button variant="contained" type="submit">
-              Submit
+              SIGN IN
             </Button>
           </Box>
 
-          <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/register">Do you have not an account?</Link>
+          <Box  sx={{  mt: 2}}>
+            <Typography sx={{display:"inline-block"}} >Don't have an account?</Typography><Link to="/" style={{textDecoration:"none",color:"red"}}> Sign Up</Link>
           </Box>
         </Grid>
 
-        <Grid item xs={10} sm={7} md={6}>
-          <Container>
-            <img src={image} alt="img" />
-          </Container>
-        </Grid>
+       
       </Grid>
     </Container>
   )
