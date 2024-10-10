@@ -2,14 +2,15 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
+
+
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
+
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+
 import { AppBar, Box } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const NavBar = () => {
   return (
@@ -33,7 +34,7 @@ const NavBar = () => {
               m:2
             }}
             
-          >DASHBOARD
+          ><Link to="/dashboard" style={{textDecoration:"none",color:"black"}}>DASHBOARD</Link>
             
           </Typography>
           <Typography
@@ -52,7 +53,7 @@ const NavBar = () => {
               m:2
             }}
             
-          >NEW BLOG
+          ><Link to="/newblog" style={{textDecoration:"none",color:"black"}}>NEW BLOG</Link>
             
           </Typography>
           <Typography
@@ -71,7 +72,7 @@ const NavBar = () => {
               m:2
             }}
             
-          >ABOUT
+          ><Link to="/about" style={{textDecoration:"none",color:"black"}}>ABOUT</Link>
             
           </Typography>
           </Box>
@@ -82,7 +83,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton >
-                <Avatar alt="Remy Sharp" src="" />
+              <Link to="/auth" ><Avatar alt="Remy Sharp" src="" /></Link> 
               </IconButton>
             </Tooltip>
             <Menu

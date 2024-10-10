@@ -2,36 +2,43 @@ import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import Avatar from "@mui/material/Avatar"
 import LockIcon from "@mui/icons-material/Lock"
-import image from "../assets/result.svg"
+
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
 import { Link, useNavigate } from "react-router-dom"
-
+import React from "react"
 import TextField from "@mui/material/TextField"
+import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
+import { Visibility, VisibilityOff } from "@mui/icons-material"
+
 
 const Register = () => {
   const navigate = useNavigate()
+  const [showPassword, setShowPassword] = React.useState(false);
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event) => {
+    event.preventDefault()};
   return (
     <Container maxWidth="lg">
       <Grid
         container
         justifyContent="center"
         direction="row-reverse"
-        rowSpacing={{ sm: 3 }}
         sx={{
           height: "100vh",
           p: 2,
         }}
       >
-        <Grid item xs={12}>
-          <Typography variant="h3" color="primary" align="center">
-            STOCK APP
-          </Typography>
-        </Grid>
+      
 
-        <Grid item xs={12} sm={10} md={6}>
+        <Grid item xs={12} sm={10} md={4}>
           <Avatar
             sx={{
               backgroundColor: "secondary.light",
@@ -48,7 +55,7 @@ const Register = () => {
             mb={2}
             color="secondary.light"
           >
-            Register
+            Sign Up
           </Typography>
 
           <Box
@@ -83,31 +90,43 @@ const Register = () => {
               type="email"
               variant="outlined"
             />
-            <TextField
-              label="password"
-              name="password"
-              id="password"
-              type="password"
-              variant="outlined"
-            />
+                 <FormControl  variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+              
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
             <Button type="submit" variant="contained" size="large">
-              Submit
+              Sign Up
             </Button>
           </Box>
 
-          <Box sx={{ textAlign: "center", mt: 2 }}>
-            <Link to="/">Do you have an account?</Link>
+          <Box sx={{  mt: 2 }}>
+            <Typography sx={{display:"inline-block"}}>Already have an account?</Typography><Link to="/auth" style={{textDecoration:"none",color:"red"}}> Sign in</Link>
           </Box>
         </Grid>
 
-        <Grid item xs={0} sm={7} md={6}>
-          <Container>
-            <img src={image} alt="" />
-          </Container>
         </Grid>
-      </Grid>
-    </Container>
+     
+   </Container>
   )
 }
+
 
 export default Register

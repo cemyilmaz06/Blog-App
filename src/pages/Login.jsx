@@ -7,9 +7,22 @@ import LockIcon from "@mui/icons-material/Lock"
 import { Link } from "react-router-dom"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
-import { Button } from "@mui/material"
+import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
+import React from "react"
+import { Visibility, VisibilityOff } from "@mui/icons-material"
 
 const Login = () => {
+  const [showPassword, setShowPassword] = React.useState(false);
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
+
+  const handleMouseUpPassword = (event) => {
+    event.preventDefault();
+  };
     return (
     <Container maxWidth="lg">
       <Grid
@@ -55,20 +68,35 @@ const Login = () => {
               type="email"
               variant="outlined"
             />
-            <TextField
-              label="password"
-              name="password"
-              id="password"
-              type="password"
-              variant="outlined"
-            />
+              <FormControl  variant="outlined">
+          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  onMouseUp={handleMouseUpPassword}
+                  edge="end"
+              
+                >
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            }
+            label="Password"
+          />
+        </FormControl>
             <Button variant="contained" type="submit">
               SIGN IN
             </Button>
           </Box>
 
           <Box  sx={{  mt: 2}}>
-            <Typography sx={{display:"inline-block"}} >Don't have an account?</Typography><Link to="/" style={{textDecoration:"none",color:"red"}}> Sign Up</Link>
+            <Typography sx={{display:"inline-block"}} >Don't have an account?</Typography><Link to="/register" style={{textDecoration:"none",color:"red"}}> Sign Up</Link>
           </Box>
         </Grid>
 
