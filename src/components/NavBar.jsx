@@ -83,7 +83,7 @@ const NavBar = () => {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton >
-              <Link to="/auth" ><Avatar alt="Remy Sharp" src="" /></Link> 
+              <Link to="/" ><Avatar alt="Remy Sharp" src="" /></Link> 
               </IconButton>
             </Tooltip>
             <Menu

@@ -6,7 +6,7 @@ import LockIcon from "@mui/icons-material/Lock"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
 import Button from "@mui/material/Button"
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import React from "react"
 import TextField from "@mui/material/TextField"
 import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
@@ -14,7 +14,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material"
 
 
 const Register = () => {
-  const navigate = useNavigate()
+
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -118,7 +118,7 @@ const Register = () => {
           </Box>
 
           <Box sx={{  mt: 2 }}>
-            <Typography sx={{display:"inline-block"}}>Already have an account?</Typography><Link to="/auth" style={{textDecoration:"none",color:"red"}}> Sign in</Link>
+            <Typography sx={{display:"inline-block"}}>Already have an account?</Typography><Link to="/" style={{textDecoration:"none",color:"red"}}> Sign in</Link>
           </Box>
         </Grid>
 

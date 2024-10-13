@@ -10,8 +10,19 @@ import TextField from "@mui/material/TextField"
 import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
 import React from "react"
 import { Visibility, VisibilityOff } from "@mui/icons-material"
+import { Form, Formik } from "formik"
+import { object, string } from "yup"
+import useApiRequest from "../services/useApiRequest"
+
 
 const Login = () => {
+  const {login}=useApiRequest()
+
+  const loginSchma=object({
+    email: string().email("Lütfen geçerli email giriniz").required("email zorunludur"),
+password: string().required("Şifre zorunludur").min(8, "Şifre en az 8 karakter olmalıdır").max(16, "Şifre en fazla 16 karakter olmaldır").matches(/[a-z]+/, "Şifre en az bir küçük harf içermelidir").matches(/[A-Z]+/, "Şifre en az bir büyük harf içermelidir").matches(/[@$!%*?&/]+/, "Şifre en az bir özel karakter içermelidir"),
+  })
+  
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
@@ -56,8 +67,19 @@ const Login = () => {
           >
             Sign in
           </Typography>
+<Formik 
+initialValues={{email:"", password:""}}
+validationSchema={loginSchma}
+onSubmit={(values,actions)=>{
+  login(values)
 
-          <Box
+  actions.resetForm()
+  actions.setSubmitting()
+}}>
+{
+  ({isSubmitting,handleSubmit,handleBlur,values,touched})=>(
+    <Form>
+      <Box
             component="form"
             sx={{ display: "flex", flexDirection: "column", gap: 2 }}
           >
@@ -94,6 +116,10 @@ const Login = () => {
               SIGN IN
             </Button>
           </Box>
+    </Form>
+  )}
+</Formik>
+          
 
           <Box  sx={{  mt: 2}}>
             <Typography sx={{display:"inline-block"}} >Don't have an account?</Typography><Link to="/register" style={{textDecoration:"none",color:"red"}}> Sign Up</Link>
