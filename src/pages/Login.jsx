@@ -3,37 +3,23 @@ import Container from "@mui/material/Container"
 import Grid from "@mui/material/Grid"
 import Typography from "@mui/material/Typography"
 import LockIcon from "@mui/icons-material/Lock"
-
+import image from "../assets/result.svg"
 import { Link } from "react-router-dom"
 import Box from "@mui/material/Box"
 import TextField from "@mui/material/TextField"
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
-import React from "react"
-import { Visibility, VisibilityOff } from "@mui/icons-material"
-import { Form, Formik } from "formik"
-import { object, string } from "yup"
-import useApiRequest from "../services/useApiRequest"
+import { Button } from "@mui/material"
+import {Formik,Form} from "formik"
+import {object,string} from "yup"
+import useApiRequests from "../services/useApiRequest"
+
 
 
 const Login = () => {
-  const {login}=useApiRequest()
-
-  const loginSchma=object({
-    email: string().email("Lütfen geçerli email giriniz").required("email zorunludur"),
+  const{login}=useApiRequests()
+  const loginSchema=object({
+email: string().email("Lütfen geçerli email giriniz").required("email zorunludur"),
 password: string().required("Şifre zorunludur").min(8, "Şifre en az 8 karakter olmalıdır").max(16, "Şifre en fazla 16 karakter olmaldır").matches(/[a-z]+/, "Şifre en az bir küçük harf içermelidir").matches(/[A-Z]+/, "Şifre en az bir büyük harf içermelidir").matches(/[@$!%*?&/]+/, "Şifre en az bir özel karakter içermelidir"),
   })
-  
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (event) => {
-    event.preventDefault();
-  };
     return (
     <Container maxWidth="lg">
       <Grid
@@ -45,7 +31,7 @@ password: string().required("Şifre zorunludur").min(8, "Şifre en az 8 karakter
           p: 2,
         }}
       >
-        
+       
 
         <Grid item xs={12} sm={10} md={4}>
           <Avatar
@@ -54,34 +40,32 @@ password: string().required("Şifre zorunludur").min(8, "Şifre en az 8 karakter
               m: "auto",
               width: 40,
               height: 40,
-              mt:4
             }}
           >
             <LockIcon size="30" />
           </Avatar>
           <Typography
-            variant="h5"
+            variant="h4"
             align="center"
             mb={4}
-            color="secondary.ligh"
+            color="secondary.light"
           >
-            Sign in
+            Login
           </Typography>
-<Formik 
-initialValues={{email:"", password:""}}
-validationSchema={loginSchma}
+<Formik
+initialValues={{email:"",password:""}}
+validationSchema={loginSchema}
 onSubmit={(values,actions)=>{
-  login(values)
+login(values)
 
-  actions.resetForm()
-  actions.setSubmitting()
+
+actions.resetForm()
+actions.setSubmitting(false)
+  
 }}>
-{
-  ({isSubmitting,handleSubmit,handleBlur,values,touched})=>(
+  {({isSubmitting,handleChange,handleBlur,values,touched,errors})=>(
     <Form>
-      <Box
-            component="form"
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}
           >
             <TextField
               label="Email"
@@ -89,44 +73,39 @@ onSubmit={(values,actions)=>{
               id="email"
               type="email"
               variant="outlined"
+              onChange={handleChange}
+              value={values.email}
+              error={touched.email && Boolean(errors.email)}
+              onBlur={handleBlur}
+              helperText={errors.email}
             />
-              <FormControl  variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-              
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-            <Button variant="contained" type="submit">
-              SIGN IN
+            <TextField
+              label="password"
+              name="password"
+              id="password"
+              type="password"
+              variant="outlined"
+              onChange={handleChange}
+              value={values.password}
+              error={touched.password && Boolean(errors.password)}
+              onBlur={handleBlur}
+              helperText={errors.password}
+            />
+            <Button variant="contained" type="submit" disabled={isSubmitting}>
+              Submit
             </Button>
-          </Box>
-    </Form>
+          </Box></Form>
   )}
+  
+
 </Formik>
           
-
-          <Box  sx={{  mt: 2}}>
-            <Typography sx={{display:"inline-block"}} >Don't have an account?</Typography><Link to="/register" style={{textDecoration:"none",color:"red"}}> Sign Up</Link>
+<Box sx={{  mt: 2 }}>
+            <Typography sx={{display:"inline-block"}}>Already have an account?</Typography><Link to="/register" style={{textDecoration:"none",color:"red"}}> Sign in</Link>
           </Box>
         </Grid>
 
-       
+        
       </Grid>
     </Container>
   )

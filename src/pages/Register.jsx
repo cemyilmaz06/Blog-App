@@ -2,29 +2,19 @@ import Container from "@mui/material/Container"
 import Typography from "@mui/material/Typography"
 import Avatar from "@mui/material/Avatar"
 import LockIcon from "@mui/icons-material/Lock"
-
+import { Formik } from "formik"
 import Grid from "@mui/material/Grid"
 import Box from "@mui/material/Box"
-import Button from "@mui/material/Button"
+
 import { Link } from "react-router-dom"
 import React from "react"
-import TextField from "@mui/material/TextField"
-import { FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput } from "@mui/material"
-import { Visibility, VisibilityOff } from "@mui/icons-material"
+import RegisterForm, { registerSchema } from "../components/auth/RegisterForm"
+import useApiRequest from "../services/useApiRequest"
 
 
 const Register = () => {
 
-  const [showPassword, setShowPassword] = React.useState(false);
-
-  const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const handleMouseDownPassword = (event) => {
-    event.preventDefault();
-  };
-
-  const handleMouseUpPassword = (event) => {
-    event.preventDefault()};
+  const {register}=useApiRequest()
   return (
     <Container maxWidth="lg">
       <Grid
@@ -57,65 +47,26 @@ const Register = () => {
           >
             Sign Up
           </Typography>
+          <Formik initialValues={{
+            username:"",
+            firstName:"",
+            lastName:"",
+            email:"",
+            password:"",
+}}
+validationSchema={registerSchema}
+onSubmit={(values, actions)=>{
+  register(values)
+  actions.resetForm()
+  actions.setSubmitting(false)
+}}
+component={(props)=> <RegisterForm {...props}/>}>
+            
 
-          <Box
-            component="form"
-            sx={{ display: "flex", flexDirection: "column", gap: 2 }}
-          >
-            <TextField
-              label="User Name"
-              name="username"
-              id="userName"
-              type="text"
-              variant="outlined"
-            />
-            <TextField
-              label="First Name"
-              name="first_name"
-              id="firstName"
-              type="text"
-              variant="outlined"
-            />
-            <TextField
-              label="Last Name"
-              name="last_name"
-              id="last_name"
-              type="text"
-              variant="outlined"
-            />
-            <TextField
-              label="Email"
-              name="email"
-              id="email"
-              type="email"
-              variant="outlined"
-            />
-                 <FormControl  variant="outlined">
-          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-          <OutlinedInput
-            id="outlined-adornment-password"
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  onMouseUp={handleMouseUpPassword}
-                  edge="end"
-              
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-            label="Password"
-          />
-        </FormControl>
-            <Button type="submit" variant="contained" size="large">
-              Sign Up
-            </Button>
-          </Box>
+          </Formik>
+
+        
+        
 
           <Box sx={{  mt: 2 }}>
             <Typography sx={{display:"inline-block"}}>Already have an account?</Typography><Link to="/" style={{textDecoration:"none",color:"red"}}> Sign in</Link>
