@@ -23,6 +23,11 @@ registerSuccess:(state,{payload})=>{
   state.username=payload.data.username
       state.loading=false
 },
+logoutSuccess:(state)=>{
+  state.loading = false
+      state.username = ""
+      state.token = ""
+},
 
     fetchFail: (state) => {
       state.loading = false
@@ -31,5 +36,5 @@ registerSuccess:(state,{payload})=>{
   },
 })
 
-export const {fetchFail,fetchStart,loginSuccess,registerSuccess} = authSlice.actions
+export const {fetchFail,fetchStart,loginSuccess,registerSuccess,logoutSuccess} = authSlice.actions
 export default authSlice.reducer
