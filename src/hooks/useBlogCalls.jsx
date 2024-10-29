@@ -9,10 +9,10 @@ const useBlogCalls = () => {
     const{axiosToken}=useAxios()
 
     const getBlog= async(blogs)=>{
-      dispatch(fetchStart)
+      dispatch(fetchStart())
       try {
         const{data}=await axiosToken.get(blogs)
-        dispatch(getBlogSuccess(data.data,blogs))
+        dispatch(getBlogSuccess(data.data))
         console.log(data.data);
       } catch (error) {
         dispatch(fetchFail())
