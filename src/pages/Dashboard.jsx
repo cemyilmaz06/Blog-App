@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Card from "../components/blog/Card"
 const Dashboard = () => {
   return (
-    <div>Dashboard</div>
+    <Card/>
   )
 }
 

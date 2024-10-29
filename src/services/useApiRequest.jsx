@@ -20,7 +20,7 @@ const useApiRequest = () => {
           )
           toastSuccessNotify("Login işlemi başarılı")
           dispatch(loginSuccess(data))
-          navigate("auth")
+          navigate("/")
           console.log(data)
         } catch (error) {
           toastErrorNotify("Login işlemi başarısız")
