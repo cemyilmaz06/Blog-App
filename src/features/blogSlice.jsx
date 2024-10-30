@@ -1,14 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-const initialState={
-   blogs:[],
-   loading: false,
-  error: false,
-}
 
 
 const blogSlice= createSlice({
     name:"blog",
-    initialState,
+    initialState:{
+      blogs:[],
+      loading: false,
+     error: false,
+    },
     reducers:{
         fetchStart: (state) => {
             state.loading = true
@@ -16,8 +15,8 @@ const blogSlice= createSlice({
           },
           getBlogSuccess:(state,{payload})=>{
             state.loading=false
-            state.blogs=payload
-           console.log(payload);
+            state[payload.blogs]=payload.data
+          
           },
           fetchFail: (state) => {
             state.loading = false

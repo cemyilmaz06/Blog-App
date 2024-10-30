@@ -7,10 +7,10 @@ import { Grid } from '@mui/material'
 
 const Dashboard = () => {
   const initialState={
-    id:"",
-    title:"",
-    image:"",
-    comments:"",
+    id:[],
+    title:[],
+    image:[],
+    comments:[],
     likes:"",
     isPublish:true,
     countOfVisitors:"",
@@ -23,15 +23,17 @@ const [data, setData] = useState({initialState});
   const {blogs} = useSelector((state) => state.blog || {})
  useEffect(()=>{
     getBlog("blogs");
-   console.log(blogs);
+
   },[])
   
   return (
     <Grid container justifyContent={"center"} gap={2}>
- 
-      <Grid item>
-        <Card/>
-      </Grid>
+ {blogs?.map((blog,index)=>(
+ <Grid item key={index}>
+ <Card blog={blog}/>
+</Grid>
+ ))}
+     
 
 
     </Grid>

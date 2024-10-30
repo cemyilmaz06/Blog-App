@@ -8,16 +8,17 @@ import CardActionArea from '@mui/material/CardActionArea';
 import CardActions from '@mui/material/CardActions';
 import useBlogCalls from '../../hooks/useBlogCalls';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 export default function MultiActionAreaCard({blog}) {
-  
+ 
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image=""
+          image={blog.image}
           alt="green iguana"
         />
         <CardContent>
