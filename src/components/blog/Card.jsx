@@ -9,7 +9,12 @@ import CardActions from '@mui/material/CardActions';
 import useBlogCalls from '../../hooks/useBlogCalls';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ModeCommentIcon from '@mui/icons-material/ModeComment';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import { Box, Icon } from '@mui/material';
+import { Icons } from 'react-toastify';
+import { lightGreen } from '@mui/material/colors';
 export default function MultiActionAreaCard({blog}) {
  
   return (
@@ -34,8 +39,13 @@ export default function MultiActionAreaCard({blog}) {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <Button size="small" color="primary" >
+      <CardActions sx={{display:"flex",justifyContent:"space-between"}}>
+      <Typography sx={{display:"flex",gap:3}}>
+        <Typography><FavoriteIcon/></Typography>
+        <Typography><ModeCommentIcon/></Typography>
+        <Typography><VisibilityIcon/></Typography>
+        </Typography>
+        <Button size="small"  sx={{backgroundColor:"primary.main",color:"black",p:1}}>
          READ MORE
         </Button>
       </CardActions>
