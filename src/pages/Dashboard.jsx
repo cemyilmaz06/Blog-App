@@ -27,7 +27,7 @@ const [data, setData] = useState({initialState});
   },[])
   
   return (
-    <Grid container justifyContent={"center"} gap={2}>
+    <Grid container justifyContent={"center"} gap={5}>
  {blogs?.map((blog,index)=>(
  <Grid item key={index}>
  <Card blog={blog}/>

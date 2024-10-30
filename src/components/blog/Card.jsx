@@ -13,21 +13,24 @@ import { useSelector } from 'react-redux';
 export default function MultiActionAreaCard({blog}) {
  
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card elevation={20} sx={{ maxWidth: 400,mt:2 ,}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          height="200"
           image={blog.image}
           alt="green iguana"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-           Lizard
+          {blog.title}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+          <Typography variant="body2" sx={{ color: 'text.secondary' , display: '-webkit-box',
+              WebkitLineClamp: 2, // İki satır göster
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',}}>
+            {blog.content}
           </Typography>
         </CardContent>
       </CardActionArea>
