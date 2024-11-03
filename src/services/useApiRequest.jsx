@@ -60,7 +60,7 @@ const useApiRequest = () => {
   
   
   
-    return {login, register}
+    return {login, register,logout}
    
   
 }

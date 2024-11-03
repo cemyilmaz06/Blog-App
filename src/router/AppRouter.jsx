@@ -7,11 +7,12 @@ import Dashboard from "../pages/Dashboard";
 import NavBar from "../components/NavBar";
 import About from "../pages/About";
 import NewBlog from "../pages/NewBlog";
-
+import Footer from "../components/Footer"
 const AppRouter = () => {
   return (
     <Router>
       <NavBar/>
+     
       <Routes>
         <Route path="/auth" element={<Login />} />
         <Route path="/" element={<Dashboard />} />
@@ -22,6 +23,7 @@ const AppRouter = () => {
           <Route path="/newblog" element={<NewBlog />} />
         </Route>
       </Routes>
+      <Footer/>
     </Router>
   );
 };
