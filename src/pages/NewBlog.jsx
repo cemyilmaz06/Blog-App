@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, MenuItem, Typography } from '@mui/material';
 
+
 const currencies = [
   {
   
@@ -21,8 +22,12 @@ const currencies = [
 
 
 
-
 export default function NewBlog() {
+  const [blog, setBlog] = React.useState()
+
+  const handleChange=(e)=>{
+setBlog(e.target.value)
+  }
   return (
 
 
@@ -44,6 +49,7 @@ export default function NewBlog() {
        
           select
           label="Status*"
+          onChange={handleChange}
           
         
         >
@@ -63,6 +69,6 @@ export default function NewBlog() {
    
       
         
-        <Button sx={{width:350,mt:2,mb:3}} variant="contained">NEW BLOG</Button>
+        <Button sx={{width:350,mt:2,mb:3}} variant="contained"  >NEW BLOG</Button>
         </Box>
        ) }
