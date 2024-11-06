@@ -18,7 +18,7 @@ import { lightGreen } from '@mui/material/colors';
 export default function MultiActionAreaCard({blog}) {
  
   return (
-    <Card elevation={20} sx={{ maxWidth: 400,mt:2 ,}}>
+    <Card elevation={20} sx={{ maxWidth: 400,mt:2 ,mb:2}}>
       <CardActionArea>
         <CardMedia
           component="img"

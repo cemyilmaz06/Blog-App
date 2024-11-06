@@ -69,6 +69,6 @@ setBlog(e.target.value)
    
       
         
-        <Button sx={{width:350,mt:2,mb:3}} variant="contained"  >NEW BLOG</Button>
+        <Button sx={{width:350,mt:2,mb:3}} variant="contained">NEW BLOG</Button>
         </Box>
        ) }
