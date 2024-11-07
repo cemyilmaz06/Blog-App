@@ -7,6 +7,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { hoverStyle } from '../style/globalStyle';
 export default function About() {
 
   return (
@@ -63,7 +64,7 @@ export default function About() {
           <Typography sx={{textAlign:"center",gap:2,display:"flex"}}>
             <Typography>< LinkedInIcon
 sx={{width:50,height:50}} /></Typography>
-            <Typography><TwitterIcon sx={{width:50,height:50}} /></Typography>
+            <Typography><TwitterIcon sx={{width:50,height:50,hoverStyle}} /></Typography>
             <Typography><InstagramIcon  sx={{width:50,height:50}}/></Typography>
             <Typography><YouTubeIcon  sx={{width:50,height:50}}/></Typography>
 
