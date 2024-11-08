@@ -65,8 +65,8 @@ export default function About() {
             <Typography>< LinkedInIcon
 sx={{width:50,height:50}} /></Typography>
             <Typography><TwitterIcon sx={{width:50,height:50,hoverStyle}} /></Typography>
-            <Typography><InstagramIcon  sx={{width:50,height:50}}/></Typography>
-            <Typography><YouTubeIcon  sx={{width:50,height:50}}/></Typography>
+            <Typography><InstagramIcon  sx={{width:50,height:50,hoverStyle}}/></Typography>
+            <Typography><YouTubeIcon  sx={{width:50,height:50,hoverStyle}}/></Typography>
 
 
 
