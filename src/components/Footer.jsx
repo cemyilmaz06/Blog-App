@@ -9,7 +9,7 @@ const Footer = () => {
     Developed by FS Team
    </Typography>
    <Typography>
-   Copyright © <span>Clarusway</span> 2024
+   Copyright © <span>Logo</span> 2024
    </Typography>
 
   </Typography>
