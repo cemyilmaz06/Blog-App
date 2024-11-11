@@ -29,6 +29,7 @@ logoutSuccess:(state)=>{
       state.token = ""
 },
 
+
     fetchFail: (state) => {
       state.loading = false
       state.error = true

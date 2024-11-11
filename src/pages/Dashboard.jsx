@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import Card from "../components/blog/Card"
 import { useEffect } from 'react'
 import useBlogCalls from '../hooks/useBlogCalls'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Grid } from '@mui/material'
+import useApiRequest from '../services/useApiRequest'
+
 
 const Dashboard = () => {
   const initialState={
@@ -21,11 +23,13 @@ const Dashboard = () => {
 const [data, setData] = useState({initialState});
   const{getBlog}=useBlogCalls()
   const {blogs} = useSelector((state) => state.blog || {})
- useEffect(()=>{
-    getBlog("blogs");
 
+
+  useEffect(()=>{
+    getBlog("blogs");
+    
   },[])
-  
+
   return (
     <Grid container justifyContent={"center"} gap={5}>
  {blogs?.map((blog,index)=>(
