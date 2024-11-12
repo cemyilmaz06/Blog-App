@@ -22,7 +22,7 @@ const Dashboard = () => {
 }
 const [data, setData] = useState({initialState});
   const{getBlog}=useBlogCalls()
-  const {blogs} = useSelector((state) => state.blog || {})
+  const{blogs}= useSelector((state) => state.blog || {})
 
 
   useEffect(()=>{
