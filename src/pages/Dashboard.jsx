@@ -20,7 +20,7 @@ const Dashboard = () => {
     updatedAt:"",
     __v:""
 }
-const [data, setData] = useState({initialState});
+  const[data, setData]= useState({initialState});
   const{getBlog}=useBlogCalls()
   const{blogs}= useSelector((state) => state.blog || {})
 
