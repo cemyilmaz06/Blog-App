@@ -7,10 +7,10 @@ const currencies = [
   {
     label: "Please Choose...",
   },
-  {
+  { value:"Draft",
     label: "Draft",
   },
-  {
+  { value:"Published",
     label: "Published",
   },
 ];
@@ -60,9 +60,12 @@ export default function NewBlog() {
 
       <TextField
         fullWidth
-        label="Title*"
+        label="Title"
         id="fullWidth"
         onChange={handleChange}
+      focused
+  
+        required
       />
 
       <TextField fullWidth label="Image URL*" id="fullWidth" />
