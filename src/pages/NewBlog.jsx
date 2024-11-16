@@ -63,7 +63,7 @@ export default function NewBlog() {
         label="Title"
         id="fullWidth"
         onChange={handleChange}
-      focused
+    
   
         required
       />
